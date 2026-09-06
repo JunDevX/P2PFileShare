@@ -1,0 +1,2 @@
+C:\Users\starushka\Desktop\P2PFileShare\bin\Release\net8.0\osx-arm64\publish\P2PFileShare.pdb
+C:\Users\starushka\Desktop\P2PFileShare\bin\Release\net8.0\osx-arm64\publish\P2PFileShare

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Документация — P2P File Share Engine</title>
+    <style>
+        :root {
+            --bg-primary: #0d1117;
+            --bg-secondary: #161b22;
+            --bg-tertiary: #21262d;
+            --border-color: #30363d;
+            --text-primary: #c9d1d9;
+            --text-heading: #ffffff;
+            --accent-blue: #58a6ff;
+            --accent-green: #3fb950;
+            --code-bg: #161b22;
+            --sidebar-width: 280px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            display: flex;
+        }
+
+        /* Sidebar Navigation */
+        aside {
+            width: var(--sidebar-width);
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: var(--bg-secondary);
+            border-right: 1px solid var(--border-color);
+            padding: 24px 16px;
+            overflow-y: auto;
+        }
+
+        aside h2 {
+            font-size: 1.1rem;
+            color: var(--text-heading);
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        aside ul {
+            list-style: none;
+        }
+
+        aside li {
+            margin-bottom: 8px;
+        }
+
+        aside a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            display: block;
+            padding: 6px 12px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        aside a:hover {
+            background-color: var(--bg-tertiary);
+            color: var(--accent-blue);
+        }
+
+        /* Main Content */
+        main {
+            margin-left: var(--sidebar-width);
+            padding: 40px 60px;
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        section {
+            margin-bottom: 48px;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            color: var(--text-heading);
+            margin-bottom: 16px;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: var(--text-heading);
+            margin-top: 32px;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            color: var(--accent-blue);
+            margin-top: 24px;
+            margin-bottom: 12px;
+        }
+
+        p {
+            margin-bottom: 16px;
+        }
+
+        /* Code Blocks */
+        pre {
+            background-color: var(--code-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 16px;
+            overflow-x: auto;
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+        }
+
+        code {
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+            background-color: var(--bg-tertiary);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        pre code {
+            background-color: transparent;
+            padding: 0;
+        }
+
+        /* Callout Boxes */
+        .callout {
+            background-color: var(--bg-secondary);
+            border-left: 4px solid var(--accent-blue);
+            padding: 16px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 20px;
+        }
+
+        .callout.warning {
+            border-left-color: #d29922;
+        }
+
+        /* Lists */
+        ul, ol {
+            margin-left: 24px;
+            margin-bottom: 16px;
+        }
+
+        li {
+            margin-bottom: 6px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+            aside {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+            main {
+                margin-left: 0;
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <aside>
+        <h2>DOCS MENU</h2>
+        <ul>
+            <li><a href="#overview">Обзор проекта</a></li>
+            <li><a href="#quick-start">Быстрый запуск</a></li>
+            <li><a href="#windows">Инструкция: Windows</a></li>
+            <li><a href="#macos">Инструкция: macOS</a></li>
+            <li><a href="#android">Инструкция: Android (Termux)</a></li>
+            <li><a href="#linux">Инструкция: Linux</a></li>
+            <li><a href="#network-setup">Настройка сети</a></li>
+        </ul>
+    </aside>
+
+    <main>
+        <section id="overview">
+            <h1>P2P File Share Engine Documentation</h1>
+            <p>Добро пожаловать в официальную документацию консольного P2P-клиента обмена файлами в локальной сети с интерфейсом в стиле macOS Terminal.</p>
+            <div class="callout">
+                <strong>Ключевая особенность:</strong> Передача файлов происходит напрямую между устройствами без сторонних облачных серверов. Использование UDP Broadcast избавляет от необходимости вводить IP-адреса вручную.
+            </div>
+        </section>
+
+        <section id="quick-start">
+            <h2>Быстрый запуск из GitHub Releases</h2>
+            <p>Если вы скачали готовый исполняемый файл со страницы релизов GitHub:</p>
+            <ol>
+                <li>Перейдите в раздел <code>Releases</code> репозитория.</li>
+                <li>Загрузите бинарный файл, соответствующий вашей операционной системе.</li>
+                <li>Запустите файл и следуйте инструкциям на экране.</li>
+            </ol>
+        </section>
+
+        <section id="windows">
+            <h2>Windows (x64)</h2>
+            
+            <h3>Запуск из готовых релизов:</h3>
+            <p>Скачайте <code>P2PFileShare-win-x64.exe</code> и запустите его двойным кликом. При первом запуске брандмауэр Windows может запросить разрешение на работу в сети — выберите <strong>«Разрешить доступ для частных сетей»</strong>.</p>
+
+            <h3>Самосборка из исходников:</h3>
+            <pre><code># Клонирование и переход в папку
+git clone https://github.com/JunDevX/P2PFileShare.git
+cd P2PFileShare
+
+# Компиляция в единый .exe
+dotnet publish -c Release -r win-x64 --self-contained true /p:PublishSingleFile=true
+
+# Файл будет сформирован по пути:
+# bin/Release/net8.0/win-x64/publish/P2PFileShare.exe</code></pre>
+        </section>
+
+        <section id="macos">
+            <h2>macOS (Apple Silicon & Intel)</h2>
+
+            <h3>Запуск из готовых релизов:</h3>
+            <ol>
+                <li>Загрузите файл <code>P2PFileShare-osx-arm64</code> (для M1/M2/M3/M4) или <code>P2PFileShare-osx-x64</code> (для Intel).</li>
+                <li>Откройте <code>Terminal.app</code> в папке с файлом и разрешите запуск:
+                    <pre><code>chmod +x P2PFileShare-osx-arm64
+./P2PFileShare-osx-arm64</code></pre>
+                </li>
+            </ol>
+
+            <div class="callout warning">
+                <strong>Обратите внимание:</strong> Если macOS блокирует запуск бинарника, откройте <i>Системные настройки &rarr; Конфиденциальность и безопасность</i> и нажмите кнопку <strong>«Все равно открыть»</strong>.
+            </div>
+
+            <h3>Самосборка из исходников:</h3>
+            <pre><code># Сборка для Apple Silicon (M1-M4)
+dotnet publish -c Release -r osx-arm64 --self-contained true /p:PublishSingleFile=true
+
+# Сборка для Intel Mac
+dotnet publish -c Release -r osx-x64 --self-contained true /p:PublishSingleFile=true</code></pre>
+        </section>
+
+        <section id="android">
+            <h2>Android (через Termux)</h2>
+
+            <h3>Запуск из готовых релизов:</h3>
+            <ol>
+                <li>Установите приложение <strong>Termux</strong> (из F-Droid).</li>
+                <li>Предоставте доступ к файлам:
+                    <pre><code>termux-setup-storage</code></pre>
+                </li>
+                <li>Перенесите скачанный бинарный файл <code>P2PFileShare-linux-arm64</code> в память телефона и запустите в Termux:
+                    <pre><code>cd ~/storage/downloads
+chmod +x P2PFileShare-linux-arm64
+./P2PFileShare-linux-arm64</code></pre>
+                </li>
+            </ol>
+
+            <h3>Самосборка из исходников на ПК:</h3>
+            <pre><code>dotnet publish -c Release -r linux-arm64 --self-contained true /p:PublishSingleFile=true</code></pre>
+        </section>
+
+        <section id="linux">
+            <h2>Linux (x64)</h2>
+
+            <h3>Запуск из готовых релизов:</h3>
+            <pre><code>chmod +x P2PFileShare-linux-x64
+./P2PFileShare-linux-x64</code></pre>
+
+            <h3>Самосборка из исходников:</h3>
+            <pre><code>dotnet publish -c Release -r linux-x64 --self-contained true /p:PublishSingleFile=true</code></pre>
+        </section>
+
+        <section id="network-setup">
+            <h2>Настройка сети</h2>
+            <p>Для корректного взаимодействия устройств убедитесь, что соблюдены следующие условия:</p>
+            <ul>
+                <li>Оба устройства подключены к одной локальной Wi-Fi сети или объединены через виртуальную сеть (Radmin VPN, Tailscale, ZeroTier).</li>
+                <li>В файрволе открыты порты: <code>8888 (UDP)</code> для автопоиска и <code>9999 (TCP)</code> для передачи данных.</li>
+            </ul>
+        </section>
+    </main>
+
+</body>
+</html>
